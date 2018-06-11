@@ -22,12 +22,44 @@ function Jumper() {
 	sounds = ['jump.mp3', 'die.mp3', 'win.mp3'];
 	jsons = ['level.json'];
 	src = pictures.concat(sounds).concat(jsons);
-	Q.load(src, function(){loadReady()}, {
+	Q.load(src, function(){ loadReady() }, {
 		progressCallback: function(loaded, total) {
 			console.log(loaded + "/" + total);
 		}
 	});
 
-	
+	loadReady = function() {
+		Q.stageScene('background', 0)
+		loadNextLevel()
+	}
 
+	groundY = 550;
+
+	Q.Sprite.extend('Player', {
+		init: function(p) {
+
+		},
+		detect: function(collision) {
+
+		},
+		pass: function() {
+
+		},
+		die: function() {
+
+		},
+		draw: function(ctx) {
+
+		},
+		step: function(dt) {
+
+		}
+	});
+
+
+	loadNextLevel = function() {}
+
+	Q.scene('background', function(stage) {
+		stage.insert(new Q.Repeater({ asset: 'background.png', z: 0 }));
+	});
 }
