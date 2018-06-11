@@ -29,8 +29,8 @@ function Jumper() {
 	});
 
 	loadReady = function() {
-		Q.stageScene('background', 0)
-		loadNextLevel()
+		Q.stageScene('background', 0);
+		loadNextLevel();
 	}
 
 	groundY = 550;
