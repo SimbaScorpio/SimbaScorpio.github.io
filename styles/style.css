@@ -1,0 +1,33 @@
+@font-face {
+	font-family: 'Pico';
+	font-display: auto;
+	src: url("../sources/fonts/23D28C_0_0.eot");
+	src: url("../sources/fonts/23D28C_0_0.eot?#iefix") format('embedded-opentype'), url("../sources/fonts/23D28C_0_0.woff") format('woff'), url("../sources/fonts/23D28C_0_0.ttf") format('truetype')
+}
+
+body {
+	background-color: #24292e;
+	background-image: url('../sources/images/game/star-bg.svg');
+}
+
+.game-canvas-container {
+	width: 1400px;
+	height: 800px;
+	margin: 0 auto;
+}
+
+.progress {
+	position: relative;
+	margin: 0 auto;
+	width: 500px;
+	height: 24px;
+	bottom: 400px;
+}
+
+.logo {
+	position: relative;
+	margin: 0 auto;
+	width: 500px;
+	height: 100px;
+	bottom: 400px;
+}
