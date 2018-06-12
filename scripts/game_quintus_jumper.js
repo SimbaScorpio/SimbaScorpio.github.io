@@ -7,8 +7,6 @@ $(document).ready(function() {
 	Jumper();
 })
 
-
-
 function Jumper() {
 	// initialize Quintus enginee including most of its modules
 	Q = Quintus({
