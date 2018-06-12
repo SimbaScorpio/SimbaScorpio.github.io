@@ -44,7 +44,7 @@ function Jumper() {
 	Q.state.reset({ die: 0, level: 1, maxLevel: 100, sound: true });
 
 	Q.controls();	// Mention that Q.controls() should be called after setting touchControls 
-				 	// and before setting keyboardControls.	
+					// and before setting keyboardControls.	
 	Q.input.keyboardControls({
 		SPACE: 'up'
 	});
