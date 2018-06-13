@@ -219,7 +219,7 @@ function Jumper() {
 				if (tiles[row][i] == -1) {
 					stage.insert(new Q.Brick2({ x: canvasWidth/42*i }));
 				} else {
-					stage.insert(new Q.Brick({ x: canvasWidth/42*i, h: tiles[row][i]*21*rtt }));
+					stage.insert(new Q.Brick({ x: canvasWidth/42*i, h: Math.floor(tiles[row][i]*21*rtt) }));
 				}
 			}
 		}
