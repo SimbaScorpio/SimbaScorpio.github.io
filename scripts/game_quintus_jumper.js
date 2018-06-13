@@ -4,6 +4,8 @@
   but you are not allowed to use the code or art to make your own games
 */
 $(document).ready(function() {
+	var h = $('#game-canvas').attr('height');
+	$('.container-fluid').css('margin-top', ($(window).get(0).innerHeight-h)/2);
 	Jumper();
 })
 
@@ -47,18 +49,19 @@ function Jumper() {
 		SPACE: 'up'
 	});
 
-	groundY = 550;
-	canvasWidth = 1400;
-	canvasHeight = 800;
+	canvasWidth = $('#game-canvas').attr('width');
+	canvasHeight = $('#game-canvas').attr('height');
+	rtt = canvasHeight/800;
+	groundY = Math.floor(550*rtt);
 
 	Q.Sprite.extend('Player', {
 		init: function(p) {
 			this._super(p, {
 				x: 100, y: 400,
-				w: 42, h: 42,
+				w: 42*rtt, h: 42*rtt,
 				vx: 0, vy: 0,
 				ax: 0, ay: 0,
-				gravity: 0.02,
+				gravity: 0.02*rtt,
 				jumpable: false,
 				start: false,
 				hidden: false
@@ -106,7 +109,7 @@ function Jumper() {
 		},
 		step: function(dt) {
 			if (this.p.start == true) {
-				this.p.vx = 5.5;
+				this.p.vx = 5.5*rtt;
 				this.p.x += this.p.vx;
 			}
 			this.p.y += this.p.vy;
@@ -115,7 +118,7 @@ function Jumper() {
 					this.p.start = true;
 				}
 				this.p.jumpable = false;
-				this.p.vy = -9.5;
+				this.p.vy = -9.5*rtt;
 				this.animate({ angle: 180 + this.p.angle }, 0.9);
 				if (currentSound()) {
 					Q.audio.play('jump.mp3');
@@ -146,7 +149,7 @@ function Jumper() {
 	Q.Sprite.extend('Brick', {
 		init: function(p) {
 			this._super(p, {
-				w: 42, h: 0, hi: 0
+				w: 42*rtt, h: 0, hi: 0
 			});
 			this.add('tween');
 			this.show();
@@ -164,7 +167,7 @@ function Jumper() {
 	Q.Sprite.extend('Brick2', {
 		init: function(p) {
 			this._super(p, {
-				w: 39, h: 14, y: groundY - 42 - 13
+				w: 39*rtt, h: Math.floor(14*rtt)+1, y: Math.floor(groundY - 42*rtt - 13*rtt)
 			});
 		},
 		draw: function(ctx) {
@@ -216,7 +219,7 @@ function Jumper() {
 				if (tiles[row][i] == -1) {
 					stage.insert(new Q.Brick2({ x: canvasWidth/42*i }));
 				} else {
-					stage.insert(new Q.Brick({ x: canvasWidth/42*i, h: tiles[row][i]*21 }));
+					stage.insert(new Q.Brick({ x: canvasWidth/42*i, h: tiles[row][i]*21*rtt }));
 				}
 			}
 		}
